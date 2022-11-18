@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить новую книгу в библиотеку</title>
+</head>
+<body>
+<!-- Не монимаю, что такое th:action, для получение объекта не th:value, а  th:object-->
+<form th:method="POST" th:action="@{/books}" th:object="${book}">
+    <label for="name">Введите название книги</label>
+    <input id="name" type="text" th:field="*{bookName}">
+    <div style="color:red" th:if="${#fields.hasErrors('bookName')}" th:errors="*{bookName}">Name error</div>
+    <br/>
+    <label for="author">Введите автора</label>
+    <input id="author" type="text" th:field="*{author}">
+    <div style="color:red" th:if="${#fields.hasErrors('author')}" th:errors="*{author}">Name error</div>
+    <br/>
+    <label for="year">Введите год</label>
+    <input id="year" type="text" th:field="*{year}">
+    <div style="color:red" th:if="${#fields.hasErrors('year')}" th:errors="*{year}">Name error</div>
+    <br/>
+    <input type="submit" value="Создать!">
+</form>
+</body>
+</html>
